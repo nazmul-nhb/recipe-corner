@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Recipe from "../Recipe/Recipe";
 
 const Recipes = () => {
 
@@ -19,10 +20,15 @@ const Recipes = () => {
                     <p className="text-[#150B2B99] ">We cook the best dishes in the continent. You are welcome here to enjoy our delicious dishes! Our dishes are so delicious that you will never forget the taste!</p>
                 </div>
                 <div className="flex">
-                    <div className="">
-
+                    <div className="w-3/5 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {
+                            recipes.map(recipe => <Recipe
+                                key={recipe.recipe_id}
+                                recipe={recipe}
+                            ></Recipe>)
+                        }
                     </div>
-                    <div className="">
+                    <div className="w-1/3">
 
                     </div>
                 </div>

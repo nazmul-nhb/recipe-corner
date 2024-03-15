@@ -1,0 +1,180 @@
+[
+    {
+        "recipe_image": "https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/basil-chicken-stir-fry.jpg",
+        "recipe_id": "001",
+        "recipe_name": "Basil Chicken Stir-Fry",
+        "short_description": "A flavorful stir-fry dish with tender chicken and fresh basil leaves.",
+        "ingredients": [
+            "550g chicken",
+            "120ml soy sauce",
+            "200g basil leaves",
+            "400g mushrooms"
+        ],
+        "preparing_time": 30,
+        "calories": 320
+    },
+    {
+        "recipe_image": "https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/vegetable-curry.jpg",
+        "recipe_id": "002",
+        "recipe_name": "Vegetable Curry",
+        "short_description": "A rich and spicy curry packed with assorted vegetables.",
+        "ingredients": [
+            "300g potatoes",
+            "200g carrots",
+            "150g green beans",
+            "1 can coconut milk",
+            "100g curry paste"
+        ],
+        "preparing_time": 45,
+        "calories": 280
+    },
+    {
+        "recipe_image": "https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/mango-avocado-salad.jpg",
+        "recipe_id": "003",
+        "recipe_name": "Mango Avocado Salad",
+        "short_description": "A refreshing salad with ripe mangoes, creamy avocados, and tangy dressing.",
+        "ingredients": [
+            "2 ripe mangoes",
+            "2 avocados",
+            "100g mixed greens",
+            "50g almonds",
+            "100ml balsamic vinaigrette"
+        ],
+        "preparing_time": 15,
+        "calories": 220
+    },
+    {
+        "recipe_image": "https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/spaghetti-carbonara.jpg",
+        "recipe_id": "004",
+        "recipe_name": "Spaghetti Carbonara",
+        "short_description": "Classic Italian pasta dish with creamy sauce, crispy bacon, and Parmesan cheese.",
+        "ingredients": [
+            "400g spaghetti",
+            "200g bacon",
+            "4 eggs",
+            "100g grated Parmesan cheese",
+            "2 cloves garlic"
+        ],
+        "preparing_time": 25,
+        "calories": 480
+    },
+    {
+        "recipe_image": "https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/quinoa-stuffed-peppers.jpg",
+        "recipe_id": "005",
+        "recipe_name": "Quinoa Stuffed Bell Peppers",
+        "short_description": "Colorful bell peppers stuffed with quinoa, black beans, and cheese, baked to perfection.",
+        "ingredients": [
+            "4 large bell peppers",
+            "1 cup quinoa",
+            "1 can black beans",
+            "200g cheddar cheese",
+            "1 tsp cumin"
+        ],
+        "preparing_time": 40,
+        "calories": 350
+    },
+    {
+        "recipe_image": "https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/berry-smoothie-bowl.jpg",
+        "recipe_id": "006",
+        "recipe_name": "Berry Smoothie Bowl",
+        "short_description": "A vibrant smoothie bowl bursting with fresh berries, banana, and crunchy granola.",
+        "ingredients": [
+            "1 cup mixed berries",
+            "1 ripe banana",
+            "200ml almond milk",
+            "50g granola",
+            "2 tbsp honey"
+        ],
+        "preparing_time": 10,
+        "calories": 220
+    },
+    {
+        "recipe_image": "https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/grilled-salmon-with-aspargus.jpg",
+        "recipe_id": "007",
+        "recipe_name": "Grilled Salmon with Asparagus",
+        "short_description": "Juicy grilled salmon fillets served with tender asparagus spears.",
+        "ingredients": [
+            "4 salmon fillets",
+            "300g asparagus",
+            "2 tbsp olive oil",
+            "1 lemon",
+            "Salt and pepper to taste"
+        ],
+        "preparing_time": 35,
+        "calories": 380
+    },
+    {
+        "recipe_image": "https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/lemon-garlic-shrimp-pasta.jpg",
+        "recipe_id": "008",
+        "recipe_name": "Lemon Garlic Shrimp Pasta",
+        "short_description": "Delicious pasta tossed in a creamy lemon garlic sauce with succulent shrimp.",
+        "ingredients": [
+            "300g pasta",
+            "300g shrimp",
+            "4 cloves garlic",
+            "1 lemon",
+            "200ml heavy cream"
+        ],
+        "preparing_time": 20,
+        "calories": 420
+    },
+    {
+        "recipe_image": "https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/vegetarian-chili.jpg",
+        "recipe_id": "009",
+        "recipe_name": "Vegetarian Chili",
+        "short_description": "Hearty and comforting vegetarian chili loaded with beans, veggies, and spices.",
+        "ingredients": [
+            "2 cans black beans",
+            "1 can kidney beans",
+            "400g diced tomatoes",
+            "200g corn",
+            "1 onion"
+        ],
+        "preparing_time": 50,
+        "calories": 280
+    },
+    {
+        "recipe_image": "https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/caprese-salad.jpg",
+        "recipe_id": "010",
+        "recipe_name": "Caprese Salad",
+        "short_description": "A simple yet elegant salad featuring ripe tomatoes, fresh mozzarella, and basil leaves.",
+        "ingredients": [
+            "4 ripe tomatoes",
+            "200g fresh mozzarella",
+            "50g fresh basil leaves",
+            "2 tbsp balsamic glaze"
+        ],
+        "preparing_time": 10,
+        "calories": 180
+    },
+    {
+        "recipe_image": "https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/chicken-fajitas.jpg",
+        "recipe_id": "011",
+        "recipe_name": "Chicken Fajitas",
+        "short_description": "Tender chicken strips marinated in spices and grilled with bell peppers and onions.",
+        "ingredients": [
+            "500g chicken breast",
+            "2 bell peppers",
+            "1 onion",
+            "2 tbsp fajita seasoning",
+            "8 flour tortillas"
+        ],
+        "preparing_time": 25,
+        "calories": 320
+    },
+    {
+        "recipe_image": "https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/ratatouille.jpg",
+        "recipe_id": "012",
+        "recipe_name": "Ratatouille",
+        "short_description": "A colorful and flavorful French vegetable stew made with tomatoes, zucchini, and eggplant.",
+        "ingredients": [
+            "2 eggplants",
+            "3 zucchinis",
+            "4 tomatoes",
+            "2 bell peppers",
+            "4 cloves garlic"
+        ],
+        "preparing_time": 60,
+        "calories": 250
+    }
+]

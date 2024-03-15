@@ -4,12 +4,20 @@ import Recipe from "../Recipe/Recipe";
 const Recipes = () => {
 
     const [recipes, setRecipes] = useState([]);
+    const [toCook, setToCook] = useState([]);
 
     useEffect(() => {
         fetch('https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/recipes.json')
             .then(response => response.json())
             .then(data => setRecipes(data))
     }, [])
+
+    const addToCooking = recipe => {
+        const newToCook = [...toCook, recipe];
+        const uniqueToCook = newToCook.filter((recipe, idx, newToCook) => newToCook.indexOf(recipe) === idx);
+        setToCook(uniqueToCook);
+        console.log(toCook);
+    }
 
 
     return (
@@ -19,16 +27,17 @@ const Recipes = () => {
                     <h2 className="text-4xl text-[#150B2B] font-semibold">Our Recipes</h2>
                     <p className="text-[#150B2B99] ">We cook the best dishes in the continent. You are welcome here to enjoy our delicious dishes! Our dishes are so delicious that you will never forget the taste!</p>
                 </div>
-                <div className="flex">
-                    <div className="w-3/5 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex flex-col lg:flex-row">
+                    <div className="w-full lg:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-6">
                         {
                             recipes.map(recipe => <Recipe
                                 key={recipe.recipe_id}
                                 recipe={recipe}
+                                addToCooking={addToCooking}
                             ></Recipe>)
                         }
                     </div>
-                    <div className="w-1/3">
+                    <div className="w-full lg:w-1/3">
 
                     </div>
                 </div>

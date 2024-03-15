@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;800;900&family=Lexend:wght@100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.fira-sans {
+  font-family: "Fira Sans", sans-serif;
+}
+
+.font-lexend {
+  font-family: "Lexend", sans-serif;
+}

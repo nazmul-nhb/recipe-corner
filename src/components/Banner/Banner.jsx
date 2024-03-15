@@ -9,7 +9,7 @@ const Banner = () => {
                         <h2 className="text-xl md:text-5xl text-white font-bold">Discover an exceptional cooking class tailored for you!</h2>
                     </div>
                     <div className="text-base md:text-lg text-white">
-                        <p className="">We cook the best dishes in the continent. You are welcome here to enjoy our delicious dishes! Our dishes are so delicious that you will never forget the</p>
+                        <p className="">We cook the best dishes in the continent. You are welcome here to enjoy our delicious dishes! Our dishes are so delicious that you will never forget the taste!</p>
                     </div>
                     <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center">
                         <button className="w-48 h-16 text-[#150B2B] rounded-[50px] font-semibold text-xl bg-[#0BE58A] border border-[#0BE58A] hover:text-white hover:border-white hover:bg-transparent">Explore Now</button>

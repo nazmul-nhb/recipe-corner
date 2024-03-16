@@ -50,11 +50,11 @@ const Recipes = () => {
     return (
         <div className="font-lexend mx-6 lg:mx-32 lg:mt-12 mt-8">
             <div className="max-w-[1600px] w-full mx-auto">
-                <div className="w-1/2 flex flex-col gap-6 justify-center items-center mx-auto text-center">
-                    <h2 className="text-4xl text-[#150B2B] font-semibold">Our Recipes</h2>
-                    <p className="text-[#150B2B99]">We cook the best dishes in the continent. You are welcome here to enjoy our delicious dishes! Our dishes are so delicious that you will never forget the taste!</p>
+                <div className="w-full lg:w-1/2 flex flex-col gap-6 justify-center items-center mx-auto text-center">
+                    <h2 className="text-2xl md:text-4xl text-[#150B2B] font-semibold">Our Recipes</h2>
+                    <p className="text-[#150B2B99] p-4">We cook the best dishes in the continent. You are welcome here to enjoy our delicious dishes! Our dishes are so delicious that you will never forget the taste!</p>
                 </div>
-                <div className="flex flex-col lg:flex-row gap-6">
+                <div className="flex flex-col lg:flex-row gap-6 mt-4 lg:mt-8">
                     <div className="w-full lg:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-6">
                         {
                             recipes.map(recipe => <Recipe
@@ -68,11 +68,6 @@ const Recipes = () => {
                         <div className="">
                             <h3 className="text-center text-2xl font-semibold text-[#282828]">Want to Cook: {toCook.length} </h3>
                             <hr className="border border-[#28282826] w-3/4 mx-auto my-4" />
-                            <div className="toast toast-top toast-end">
-                                {/*                                 <div className="alert alert-info">
-                                    <span>Already Exists!</span>
-                                </div> */}
-                            </div>
                             <table className='text-[#878787] fira-sans table-auto'>
                                 <thead className='text-left text-base '>
                                     <tr className="">

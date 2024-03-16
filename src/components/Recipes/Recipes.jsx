@@ -6,6 +6,7 @@ const Recipes = () => {
 
     const [recipes, setRecipes] = useState([]);
     const [toCook, setToCook] = useState([]);
+    const [cooking, setCooking] = useState([]);
 
     useEffect(() => {
         fetch('https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/recipes.json')
@@ -13,7 +14,7 @@ const Recipes = () => {
             .then(data => setRecipes(data))
     }, [])
 
-    const addToCooking = recipe => {
+    const handleWantToCook = recipe => {
         const newToCook = [...toCook, recipe];
         const uniqueToCook = newToCook.filter((rec, index, array) => array.indexOf(rec) === index);
         setToCook(uniqueToCook);
@@ -33,7 +34,7 @@ const Recipes = () => {
                             recipes.map(recipe => <Recipe
                                 key={recipe.recipe_id}
                                 recipe={recipe}
-                                addToCooking={addToCooking}
+                                handleWantToCook={handleWantToCook}
                             ></Recipe>)
                         }
                     </div>
@@ -44,10 +45,10 @@ const Recipes = () => {
                             <table className='text-[#878787] fira-sans table-auto'>
                                 <thead className='text-left text-base '>
                                     <tr className="">
-                                        <th className="font-medium pr-6 pb-6"></th>
-                                        <th className="font-medium pr-6 pb-6">Name</th>
-                                        <th className="font-medium pr-6 pb-6">Time</th>
-                                        <th className="font-medium pr-6 pb-6">Calories</th>
+                                        <th className="font-medium pr-4 pb-6"></th>
+                                        <th className="font-medium pr-4 pb-6">Name</th>
+                                        <th className="font-medium pr-4 pb-6">Time</th>
+                                        <th className="font-medium pr-4 pb-6">Calories</th>
                                     </tr>
                                 </thead>
                                 <tbody>

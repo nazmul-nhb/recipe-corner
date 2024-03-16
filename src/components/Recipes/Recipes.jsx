@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Recipe from "../Recipe/Recipe";
 import ToCook from "../ToCook/ToCook";
+import Cooking from "../Cooking/Cooking";
 
 const Recipes = () => {
 
@@ -20,6 +21,10 @@ const Recipes = () => {
         setToCook(uniqueToCook);
     }
 
+    const handleCurrentlyCooking = recipe => {
+        const preparing = [...cooking, recipe];
+        setCooking(preparing);
+    }
 
     return (
         <div className="font-lexend mx-6 lg:mx-32 lg:mt-12 mt-8">
@@ -57,16 +62,34 @@ const Recipes = () => {
                                             key={recipe.recipe_id}
                                             recipe={recipe}
                                             serial={toCook.indexOf(recipe)}
+                                            handleCurrentlyCooking={handleCurrentlyCooking}
                                         ></ToCook>)
                                     }
-
                                 </tbody>
                             </table>
                         </div>
                         <div className="">
-                            <h3 className="text-center text-2xl font-semibold text-[#282828]">Currently Cooking: </h3>
+                            <h3 className="text-center text-2xl font-semibold text-[#282828]">Currently Cooking: {cooking.length} </h3>
                             <hr className="border border-[#28282826] w-3/4 mx-auto my-4" />
-
+                            <table className='text-[#878787] fira-sans table-auto'>
+                                <thead className='text-left text-base '>
+                                    <tr className="">
+                                        <th className="font-medium pr-4 pb-6"></th>
+                                        <th className="font-medium pr-4 pb-6">Name</th>
+                                        <th className="font-medium pr-4 pb-6">Time</th>
+                                        <th className="font-medium pr-4 pb-6">Calories</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        cooking.map(recipe => <Cooking
+                                            key={recipe.recipe_id}
+                                            recipe={recipe}
+                                            serial={cooking.indexOf(recipe)}
+                                        ></Cooking>)
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

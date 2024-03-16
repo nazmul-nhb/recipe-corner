@@ -26,7 +26,7 @@ const Recipes = () => {
         // const uniqueToCook = newToCook.filter((recipe, index, newToCook) => newToCook.indexOf(recipe) === index);
         // setToCook(uniqueToCook);
         const alreadyExists = toCook.find(item => item.recipe_id === recipe.recipe_id);
-        !alreadyExists && setToCook(newToCook);
+        !alreadyExists ? (setToCook(newToCook), toast.success("Successfully Added to Cook List!")) : toast.warn("Already Exists!");
     }
 
     const handleCurrentlyCooking = (recipe, id) => {
@@ -126,6 +126,7 @@ const Recipes = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

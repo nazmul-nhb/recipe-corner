@@ -4,7 +4,7 @@ import { MdOutlineWatchLater } from "react-icons/md";
 
 const Recipe = ({ recipe, handleWantToCook }) => {
 
-    const { recipe_id, recipe_image, recipe_name, short_description, ingredients, preparing_time, calories } = recipe;
+    const { recipe_image, recipe_name, short_description, ingredients, preparing_time, calories } = recipe;
 
     return (
         <div className='flex flex-col justify-between gap-4 p-6 border border-[#28282833] rounded-2xl'>

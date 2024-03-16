@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Recipe from "../Recipe/Recipe";
 import ToCook from "../ToCook/ToCook";
 import Cooking from "../Cooking/Cooking";
 
+// toast.configure();
 const Recipes = () => {
 
     const [recipes, setRecipes] = useState([]);
     const [toCook, setToCook] = useState([]);
     const [cooking, setCooking] = useState([]);
-    const [time, setTime] = useState(0);
-    const [calories, setCalories] = useState(0);
+    // const [time, setTime] = useState(0);
+    // const [calories, setCalories] = useState(0);
 
     useEffect(() => {
         fetch('https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/recipes.json')
@@ -20,23 +23,28 @@ const Recipes = () => {
     const handleWantToCook = recipe => {
         const newToCook = [...toCook, recipe];
         // prevent adding duplicates
-        const uniqueToCook = newToCook.filter((recipe, index, newToCook) => newToCook.indexOf(recipe) === index);
-        setToCook(uniqueToCook);
+        // const uniqueToCook = newToCook.filter((recipe, index, newToCook) => newToCook.indexOf(recipe) === index);
+        // setToCook(uniqueToCook);
+        const alreadyExists = toCook.find(item => item.recipe_id === recipe.recipe_id);
+        !alreadyExists && setToCook(newToCook);
     }
 
     const handleCurrentlyCooking = (recipe, id) => {
         const preparing = [...cooking, recipe];
         // prevent adding duplicates
-        const uniquePreparing = preparing.filter((recipe, index, preparing) => preparing.indexOf(recipe) === index);
-        setCooking(uniquePreparing);
+        // const uniquePreparing = preparing.filter((recipe, index, preparing) => preparing.indexOf(recipe) === index);
+        // setCooking(uniquePreparing);
+        setCooking(preparing);
+        // const alreadyExists = preparing.find(item => item.recipe_id === id)
+        // !alreadyExists && setCooking(preparing);
 
         // remove from want to cook table
         const remainingToCook = toCook.filter(recipe => recipe.recipe_id !== id);
         setToCook(remainingToCook);
 
         // append total time and calories
-        setTime(time + recipe.preparing_time);
-        setCalories(calories + recipe.calories);
+        /*         setTime(time + recipe.preparing_time);
+                setCalories(calories + recipe.calories); */
     }
 
     return (
@@ -61,9 +69,9 @@ const Recipes = () => {
                             <h3 className="text-center text-2xl font-semibold text-[#282828]">Want to Cook: {toCook.length} </h3>
                             <hr className="border border-[#28282826] w-3/4 mx-auto my-4" />
                             <div className="toast toast-top toast-end">
-                                <div className="alert alert-info">
-                                    <span>New mail arrived.</span>
-                                </div>
+                                {/*                                 <div className="alert alert-info">
+                                    <span>Already Exists!</span>
+                                </div> */}
                             </div>
                             <table className='text-[#878787] fira-sans table-auto'>
                                 <thead className='text-left text-base '>
@@ -76,10 +84,10 @@ const Recipes = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        toCook.map(recipe => <ToCook
+                                        toCook.map((recipe, index) => <ToCook
                                             key={recipe.recipe_id}
                                             recipe={recipe}
-                                            serial={toCook.indexOf(recipe)}
+                                            serial={index}
                                             handleCurrentlyCooking={handleCurrentlyCooking}
                                         ></ToCook>)
                                     }
@@ -100,17 +108,17 @@ const Recipes = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        cooking.map(recipe => <Cooking
+                                        cooking.map((recipe, index) => <Cooking
                                             key={recipe.recipe_id}
                                             recipe={recipe}
-                                            serial={cooking.indexOf(recipe)}
+                                            serial={index}
                                         ></Cooking>)
                                     }
                                     <tr className="font-medium">
                                         <td className='pr-6 pb-4'></td>
                                         <td className='pr-6 pb-4'></td>
-                                        <td className='pr-6 pb-4'>Total Time = {time} minutes</td>
-                                        <td className='pb-4'>Total Calories = {calories} calories</td>
+                                        <td className='pr-6 pb-4'>Total Time = {cooking.reduce((acc, item) => acc + item.preparing_time, 0)} minutes</td>
+                                        <td className='pb-4'>Total Calories = {cooking.reduce((acc, item) => acc + item.calories, 0)} calories</td>
                                     </tr>
                                 </tbody>
                             </table>

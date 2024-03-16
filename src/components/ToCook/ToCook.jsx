@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 const ToCook = ({ recipe, serial, handleCurrentlyCooking }) => {
+    console.log(recipe);
     const { recipe_id, recipe_name, preparing_time, calories } = recipe;
     return (
         <tr>

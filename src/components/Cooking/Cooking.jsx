@@ -5,7 +5,7 @@ const Cooking = ({ recipe, serial }) => {
     const { recipe_name, preparing_time, calories } = recipe;
 
     return (
-        <tr>
+        <tr className='max-[479px]:text-[88%]'>
             <td className='pr-6 pb-4 text-[#282828CC] font-semibold'>{serial + 1}</td>
             <td className='pr-6 pb-4'>{recipe_name}</td>
             <td className='pr-6 pb-4'>{preparing_time} minutes</td>

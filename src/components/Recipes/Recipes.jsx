@@ -109,7 +109,7 @@ const Recipes = () => {
                                             serial={index}
                                         ></Cooking>)
                                     }
-                                    <tr className="font-medium">
+                                    <tr className="text-[#282828CC] font-medium max-[479px]:text-[88%]">
                                         <td className='pr-6 pb-4'></td>
                                         <td className='pr-6 pb-4'></td>
                                         <td className='pr-6 pb-4'>Total Time = {cooking.reduce((acc, item) => acc + item.preparing_time, 0)} minutes</td>

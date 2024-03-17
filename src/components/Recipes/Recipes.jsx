@@ -4,8 +4,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Recipe from "../Recipe/Recipe";
 import ToCook from "../ToCook/ToCook";
 import Cooking from "../Cooking/Cooking";
-// eslint-disable-next-line no-unused-vars
-import { addCookingToLocal, addToLocal, getStoredItems, getStoredCookingItems, removeFromLocal, removeCurrentlyCooking } from "../utilities/localStorage";
+
+import { addCookingToSession, addToLocal, getStoredItems, getStoredCookingItems, removeFromLocal } from "../utilities/localStorage";
 
 
 const Recipes = () => {
@@ -50,7 +50,7 @@ const Recipes = () => {
         addToLocal(recipe.recipe_id);
     }
 
-    // get Currently Cooking items from local storage
+    // get Currently Cooking items from session storage
     useEffect(() => {
         if (recipes.length > 0) {
             const storedCookingItems = getStoredCookingItems();
@@ -70,7 +70,7 @@ const Recipes = () => {
     const handleCurrentlyCooking = (recipe, id) => {
         const preparing = [...cooking, recipe];
         setCooking(preparing);
-        addCookingToLocal(recipe.recipe_id);
+        addCookingToSession(recipe.recipe_id);
 
         toast.info("Added to Preparing List!");
 
@@ -80,19 +80,6 @@ const Recipes = () => {
 
         // remove Want to Cook from local storage
         removeFromLocal(id);
-
-        // remove Currently Cooking from UI after mentioned minutes
-        /*
-            setTimeout(() => {
-                const waitingForCooking = [...preparing, recipe];
-                const remainingCooking = waitingForCooking.filter(recipe => recipe.recipe_id !== id);
-                setCooking(remainingCooking);
-                toast.info("Cooking Completed!");
-            }, (recipe.preparing_time * 60 * 1000)); 
-        */
-
-        // remove Currently Cooking from local storage after mentioned minutes
-        // removeCurrentlyCooking(id, recipe.preparing_time)
     }
 
     return (

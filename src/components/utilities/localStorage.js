@@ -34,41 +34,26 @@ const removeFromLocal = id => {
 
 // -----------------------------------------------------------------------------
 
-// get existing stored information/items for Currently Cooking from local storage
+// get existing stored information/items for Currently Cooking from session storage
 const getStoredCookingItems = () => {
-    const cookingItemsString = localStorage.getItem('currentlyCooking');
+    const cookingItemsString = sessionStorage.getItem('currentlyCooking');
     if (cookingItemsString) {
         return JSON.parse(cookingItemsString);
     }
     return [];
 }
 
-// add Currently Cooking to local storage, stage #1
-const addCookingToLocal = id => {
+// add Currently Cooking to session storage, stage #1
+const addCookingToSession = id => {
     const currentlyCooking = getStoredCookingItems();
     currentlyCooking.push(id);
-    saveCookingToLocal(currentlyCooking);
+    saveCookingToSession(currentlyCooking);
 }
 
-// add Currently Cooking to local storage, stage # 2: save items to local storage
-const saveCookingToLocal = currentlyCooking => {
+// add Currently Cooking to session storage, stage # 2: save items to session storage
+const saveCookingToSession = currentlyCooking => {
     const itemsStringified = JSON.stringify(currentlyCooking);
-    localStorage.setItem('currentlyCooking', itemsStringified);
+    sessionStorage.setItem('currentlyCooking', itemsStringified);
 }
 
-// remove Currently Cooking from local storage after mentioned minutes
-const removeCurrentlyCooking = (id, delayMins) => {
-    // Convert delay time (in seconds) to milliseconds
-    const delayMS = delayMins * 60 * 1000;
-    // get saved items from local storage
-    const currentlyCooking = getStoredCookingItems();
-    // Set a timeout to remove the item after mentioned mins
-    setTimeout(() => {
-        // Remove the item from local storage
-        const remaining = currentlyCooking.filter(idx => idx !== id);
-        saveCookingToLocal(remaining)
-    }, delayMS);
-
-}
-
-export { addToLocal, getStoredItems, removeFromLocal, addCookingToLocal, getStoredCookingItems, removeCurrentlyCooking };
+export { addToLocal, getStoredItems, removeFromLocal, addCookingToSession, getStoredCookingItems };

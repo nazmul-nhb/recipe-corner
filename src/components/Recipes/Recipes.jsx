@@ -74,12 +74,12 @@ const Recipes = () => {
     return (
         <div className="font-lexend mx-6 lg:mx-32 lg:mt-12 mt-8">
             <div className="max-w-[1600px] w-full mx-auto">
-                <div className="w-full lg:w-1/2 flex flex-col gap-6 justify-center items-center mx-auto text-center">
+                <div className="w-full lg:w-1/2 flex flex-col gap-3 md:gap-6 justify-center items-center mx-auto text-center">
                     <h2 className="text-2xl md:text-4xl text-[#150B2B] font-semibold">Our Recipes</h2>
                     <p className="text-[#150B2B99] p-4">We cook the best dishes in the continent. You are welcome here to enjoy our delicious dishes! Our dishes are so delicious that you will never forget the taste!</p>
                 </div>
                 <div className="flex flex-col lg:flex-row gap-6 mt-4 lg:mt-8">
-                    <div className="w-full lg:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="w-full lg:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         {
                             recipes.map(recipe => <Recipe
                                 key={recipe.recipe_id}
@@ -90,11 +90,11 @@ const Recipes = () => {
                     </div>
                     <div className="w-full lg:w-2/5 flex flex-col gap-8 px-6 py-8 border border-[#28282833] rounded-2xl">
                         <div className="">
-                            <h3 className="text-center text-2xl font-semibold text-[#282828]">Want to Cook: {toCook.length} </h3>
+                            <h3 className="text-center text-lg md:text-2xl font-semibold text-[#282828]">Want to Cook : {toCook.length} </h3>
                             <hr className="border border-[#28282826] w-3/4 mx-auto my-4" />
                             <table className='text-[#878787] fira-sans table-auto'>
                                 <thead className='text-left text-base '>
-                                    <tr className="">
+                                    <tr className="max-[479px]:text-[88%]">
                                         <th className="font-medium pr-4 pb-6"></th>
                                         <th className="font-medium pr-4 pb-6">Name</th>
                                         <th className="font-medium pr-4 pb-6">Time</th>
@@ -114,11 +114,11 @@ const Recipes = () => {
                             </table>
                         </div>
                         <div className="">
-                            <h3 className="text-center text-2xl font-semibold text-[#282828]">Currently Cooking: {cooking.length} </h3>
+                            <h3 className="text-center text-lg md:text-2xl font-semibold text-[#282828]">Currently Cooking : {cooking.length} </h3>
                             <hr className="border border-[#28282826] w-3/4 mx-auto my-4" />
                             <table className='text-[#878787] fira-sans table-auto'>
                                 <thead className='text-left text-base '>
-                                    <tr className="">
+                                    <tr className="max-[479px]:text-[88%]">
                                         <th className="font-medium pr-4 pb-6"></th>
                                         <th className="font-medium pr-4 pb-6">Name</th>
                                         <th className="font-medium pr-4 pb-6">Time</th>
@@ -134,9 +134,9 @@ const Recipes = () => {
                                         ></Cooking>)
                                     }
                                     <tr className="text-[#282828CC] font-medium max-[479px]:text-[88%]">
-                                        <td className='pr-6 pb-4'></td>
-                                        <td className='pr-6 pb-4'></td>
-                                        <td className='pr-6 pb-4'>Total Time = {cooking.reduce((acc, item) => acc + item.preparing_time, 0)} minutes</td>
+                                        <td className='pr-4 pb-4'></td>
+                                        <td className='pr-4 pb-4'></td>
+                                        <td className='pr-4 pb-4'>Total Time = {cooking.reduce((acc, item) => acc + item.preparing_time, 0)} minutes</td>
                                         <td className='pb-4'>Total Calories = {cooking.reduce((acc, item) => acc + item.calories, 0)} calories</td>
                                     </tr>
                                 </tbody>

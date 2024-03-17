@@ -2,7 +2,7 @@ import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
     return (
-        <header className="mx-0 md:mx-16 lg:mx-32 mt-8 md:mt-12">
+        <header className="mx-0 md:mx-16 lg:mx-32 mt-4 md:mt-12">
             <div className="max-w-[1600px] font-lexend justify-between items-center navbar bg-base-100 mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">

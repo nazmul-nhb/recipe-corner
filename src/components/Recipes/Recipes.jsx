@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Recipe from "../Recipe/Recipe";
 import ToCook from "../ToCook/ToCook";
 import Cooking from "../Cooking/Cooking";
-import { addCookingToLocal, addToLocal, getStoredItems, getStoredCookingItems, removeFromLocal } from "../utilities/localStorage";
+import { addCookingToLocal, addToLocal, getStoredItems, getStoredCookingItems, removeFromLocal, removeCurrentlyCooking } from "../utilities/localStorage";
 
 
 const Recipes = () => {
@@ -19,7 +19,7 @@ const Recipes = () => {
             .then(data => setRecipes(data))
     }, [])
 
-    // Want to Cook items from local storage
+    // get Want to Cook items from local storage
     useEffect(() => {
         if (recipes.length > 0) {
             const storedItems = getStoredItems();
@@ -39,10 +39,7 @@ const Recipes = () => {
     const handleWantToCook = recipe => {
         const newToCook = [...toCook, recipe];
 
-        // prevent adding duplicates
-        // const uniqueToCook = newToCook.filter((recipe, index, newToCook) => newToCook.indexOf(recipe) === index);
-        // setToCook(uniqueToCook);
-
+        // prevent from adding duplicates
         const alreadyExists = toCook.find(item => item.recipe_id === recipe.recipe_id);
         // showing toast
         !alreadyExists ? (setToCook(newToCook), toast.success("Added to Want to Cook List!"))
@@ -52,7 +49,7 @@ const Recipes = () => {
         addToLocal(recipe.recipe_id);
     }
 
-    // Currently Cooking items from local storage
+    // get Currently Cooking items from local storage
     useEffect(() => {
         if (recipes.length > 0) {
             const storedCookingItems = getStoredCookingItems();
@@ -75,19 +72,24 @@ const Recipes = () => {
         addCookingToLocal(recipe.recipe_id);
 
         toast.info("Added to Currently Cooking!");
-        
-        // prevent adding duplicates
-        // const uniquePreparing = preparing.filter((recipe, index, preparing) => preparing.indexOf(recipe) === index);
-        // setCooking(uniquePreparing);
-        // const alreadyExists = preparing.find(item => item.recipe_id === id)
-        // !alreadyExists && setCooking(preparing);
 
         // remove from want to cook table
         const remainingToCook = toCook.filter(recipe => recipe.recipe_id !== id);
         setToCook(remainingToCook);
 
+        // remove Currently Cooking from UI after mentioned minutes
+        setTimeout(() => {
+            const waiting = [...preparing, recipe]
+            const remainingCooking = waiting.filter(recipe => recipe.recipe_id !== id);
+            setCooking(remainingCooking);
+            toast.info("Cooking Completed!");
+        }, (recipe.preparing_time * 60 * 1000));
+
         // remove from local storage
         removeFromLocal(id);
+
+        // remove Currently Cooking from local storage after mentioned minutes
+        removeCurrentlyCooking(id, recipe.preparing_time)
     }
 
     return (

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const Cooking = ({ recipe, serial }) => {
-        console.log(recipe);
+
     const { recipe_name, preparing_time, calories } = recipe;
 
     return (
@@ -18,4 +18,5 @@ Cooking.propTypes = {
     recipe: PropTypes.object.isRequired,
     serial: PropTypes.number.isRequired
 }
+
 export default Cooking;

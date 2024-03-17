@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 
 const ToCook = ({ recipe, serial, handleCurrentlyCooking }) => {
-    console.log(recipe);
+
     const { recipe_id, recipe_name, preparing_time, calories } = recipe;
+    
     return (
         <tr className='max-[479px]:relative max-[479px]:text-[88%]'>
             <td className='pr-4 pb-4 max-[479px]:pb-20 text-[#282828CC] font-semibold'>{serial + 1}</td>

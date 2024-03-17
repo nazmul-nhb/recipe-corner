@@ -56,5 +56,19 @@ const saveCookingToLocal = currentlyCooking => {
     localStorage.setItem('currentlyCooking', itemsStringified);
 }
 
+// remove Currently Cooking from local storage after mentioned minutes
+const removeCurrentlyCooking = (id, delayMins) => {
+    // Convert delay time (in seconds) to milliseconds
+    const delayMS = delayMins * 60 * 1000;
+    // get saved items from local storage
+    const currentlyCooking = getStoredCookingItems();
+    // Set a timeout to remove the item after mentioned mins
+    setTimeout(() => {
+        // Remove the item from local storage
+        const remaining = currentlyCooking.filter(idx => idx !== id);
+        saveCookingToLocal(remaining)
+    }, delayMS);
 
-export { addToLocal, getStoredItems, removeFromLocal, addCookingToLocal, getStoredCookingItems };
+}
+
+export { addToLocal, getStoredItems, removeFromLocal, addCookingToLocal, getStoredCookingItems, removeCurrentlyCooking };

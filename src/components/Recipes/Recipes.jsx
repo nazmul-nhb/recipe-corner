@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Recipe from "../Recipe/Recipe";
 import ToCook from "../ToCook/ToCook";
 import Cooking from "../Cooking/Cooking";
-import { addToLocal, getStoredItems, removeFromLocal } from "../utilities/localStorage";
+import { addCookingToLocal, addToLocal, getStoredItems, getStoredCookingItems, removeFromLocal } from "../utilities/localStorage";
 
 
 const Recipes = () => {
@@ -19,7 +19,7 @@ const Recipes = () => {
             .then(data => setRecipes(data))
     }, [])
 
-    // items from local storage
+    // Want to Cook items from local storage
     useEffect(() => {
         if (recipes.length > 0) {
             const storedItems = getStoredItems();
@@ -31,9 +31,9 @@ const Recipes = () => {
                     savedItems.push(recipe);
                 }
             }
-            setToCook(savedItems)
+            setToCook(savedItems);
         }
-    }, [recipes])
+    }, [recipes]);
 
     // handle Want to Cook button
     const handleWantToCook = recipe => {
@@ -45,18 +45,37 @@ const Recipes = () => {
 
         const alreadyExists = toCook.find(item => item.recipe_id === recipe.recipe_id);
         // showing toast
-        !alreadyExists ? (setToCook(newToCook), toast.success("Successfully Added to Cook List!"))
+        !alreadyExists ? (setToCook(newToCook), toast.success("Added to Want to Cook List!"))
             : toast.warn("Already Exists in Cook List!");
 
         // add to local storage
         addToLocal(recipe.recipe_id);
     }
 
+    // Currently Cooking items from local storage
+    useEffect(() => {
+        if (recipes.length > 0) {
+            const storedCookingItems = getStoredCookingItems();
+
+            const savedCookingItems = [];
+            for (const id of storedCookingItems) {
+                const recipe = recipes.find(recipe => recipe.recipe_id === id);
+                if (recipe) {
+                    savedCookingItems.push(recipe);
+                }
+            }
+            setCooking(savedCookingItems);
+        }
+    }, [recipes]);
+
     // handle Preparing button
     const handleCurrentlyCooking = (recipe, id) => {
         const preparing = [...cooking, recipe];
         setCooking(preparing);
+        addCookingToLocal(recipe.recipe_id);
 
+        toast.info("Added to Currently Cooking!");
+        
         // prevent adding duplicates
         // const uniquePreparing = preparing.filter((recipe, index, preparing) => preparing.indexOf(recipe) === index);
         // setCooking(uniquePreparing);
@@ -68,7 +87,7 @@ const Recipes = () => {
         setToCook(remainingToCook);
 
         // remove from local storage
-        removeFromLocal(id)
+        removeFromLocal(id);
     }
 
     return (

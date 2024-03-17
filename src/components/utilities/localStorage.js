@@ -1,4 +1,4 @@
-// get existing stored information/items from local storage
+// get existing stored information/items for Want to Cook from local storage
 const getStoredItems = () => {
     const storedItemsString = localStorage.getItem('toCook');
     if (storedItemsString) {
@@ -7,7 +7,7 @@ const getStoredItems = () => {
     return [];
 }
 
-// add to local storage, stage #1
+// add Want to Cook to local storage, stage #1
 const addToLocal = id => {
     const toCook = getStoredItems();
     toCook.push(id);
@@ -16,13 +16,13 @@ const addToLocal = id => {
     saveItemsToLocal(uniqueToCook);
 }
 
-// add to local storage, stage # 2: save items to local storage
+// add Want to Cook to local storage, stage # 2: save items to local storage
 const saveItemsToLocal = toCook => {
     const itemsStringified = JSON.stringify(toCook);
     localStorage.setItem('toCook', itemsStringified);
 }
 
-// remove from local storage when clicking on Preparing button
+// remove Want to Cook from local storage when clicking on Preparing button
 const removeFromLocal = id => {
     // first get saved items from local storage
     const toCook = getStoredItems();
@@ -32,4 +32,29 @@ const removeFromLocal = id => {
     saveItemsToLocal(remaining);
 }
 
-export { addToLocal, getStoredItems, removeFromLocal };
+// -----------------------------------------------------------------------------
+
+// get existing stored information/items for Currently Cooking from local storage
+const getStoredCookingItems = () => {
+    const cookingItemsString = localStorage.getItem('currentlyCooking');
+    if (cookingItemsString) {
+        return JSON.parse(cookingItemsString);
+    }
+    return [];
+}
+
+// add Currently Cooking to local storage, stage #1
+const addCookingToLocal = id => {
+    const currentlyCooking = getStoredCookingItems();
+    currentlyCooking.push(id);
+    saveCookingToLocal(currentlyCooking);
+}
+
+// add Currently Cooking to local storage, stage # 2: save items to local storage
+const saveCookingToLocal = currentlyCooking => {
+    const itemsStringified = JSON.stringify(currentlyCooking);
+    localStorage.setItem('currentlyCooking', itemsStringified);
+}
+
+
+export { addToLocal, getStoredItems, removeFromLocal, addCookingToLocal, getStoredCookingItems };

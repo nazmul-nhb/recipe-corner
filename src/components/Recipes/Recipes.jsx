@@ -74,7 +74,7 @@ const Recipes = () => {
     return (
         <div className="font-lexend mx-6 lg:mx-32 lg:mt-12 mt-8">
             <div className="max-w-[1600px] w-full mx-auto">
-                <div className="w-full lg:w-1/2 flex flex-col gap-3 md:gap-6 justify-center items-center mx-auto text-center">
+                <div className="w-full lg:w-1/2 flex flex-col gap-1 md:gap-6 justify-center items-center mx-auto text-center">
                     <h2 className="text-2xl md:text-4xl text-[#150B2B] font-semibold">Our Recipes</h2>
                     <p className="text-[#150B2B99] p-4">We cook the best dishes in the continent. You are welcome here to enjoy our delicious dishes! Our dishes are so delicious that you will never forget the taste!</p>
                 </div>

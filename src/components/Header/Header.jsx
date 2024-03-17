@@ -2,7 +2,7 @@ import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
     return (
-        <header className="mx-0 md:mx-16 lg:mx-32 mt-4 md:mt-12">
+        <header className="mx-0 md:mx-16 lg:mx-32 mt-3 md:mt-12">
             <div className="max-w-[1600px] font-lexend justify-between items-center navbar bg-base-100 mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -33,7 +33,7 @@ const Header = () => {
                         </button>
                         <input type="text" placeholder="Search" className="w-auto h-12 focus:outline-none py-4 bg-[#150B2B0D] pl-12 rounded-[50px]" />
                     </div>
-                    <div className="text-2xl bg-[#0BE58A] w-12 h-12 rounded-full flex justify-center items-center ">
+                    <div className="text-2xl bg-[#0BE58A] w-10 md:w-12 h-10 md:h-12 rounded-full flex justify-center items-center ">
                         <a href="#"><CgProfile></CgProfile></a>
                     </div>
                 </div>

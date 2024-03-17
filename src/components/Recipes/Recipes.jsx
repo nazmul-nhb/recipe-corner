@@ -4,8 +4,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import Recipe from "../Recipe/Recipe";
 import ToCook from "../ToCook/ToCook";
 import Cooking from "../Cooking/Cooking";
+import { addToLocal, getStoredItems, removeFromLocal } from "../utilities/localStorage";
 
-// toast.configure();
+
 const Recipes = () => {
 
     const [recipes, setRecipes] = useState([]);
@@ -18,18 +19,40 @@ const Recipes = () => {
             .then(data => setRecipes(data))
     }, [])
 
+    // items from local storage
+    useEffect(() => {
+        if (recipes.length > 0) {
+            const storedItems = getStoredItems();
+
+            const savedItems = [];
+            for (const id of storedItems) {
+                const recipe = recipes.find(recipe => recipe.recipe_id === id);
+                if (recipe) {
+                    savedItems.push(recipe);
+                }
+            }
+            setToCook(savedItems)
+        }
+    }, [recipes])
+
+    // handle Want to Cook button
     const handleWantToCook = recipe => {
         const newToCook = [...toCook, recipe];
 
         // prevent adding duplicates
         // const uniqueToCook = newToCook.filter((recipe, index, newToCook) => newToCook.indexOf(recipe) === index);
         // setToCook(uniqueToCook);
-        
+
         const alreadyExists = toCook.find(item => item.recipe_id === recipe.recipe_id);
         // showing toast
-        !alreadyExists ? (setToCook(newToCook), toast.success("Successfully Added to Cook List!")) : toast.warn("Already Exists!");
+        !alreadyExists ? (setToCook(newToCook), toast.success("Successfully Added to Cook List!"))
+            : toast.warn("Already Exists in Cook List!");
+
+        // add to local storage
+        addToLocal(recipe.recipe_id);
     }
 
+    // handle Preparing button
     const handleCurrentlyCooking = (recipe, id) => {
         const preparing = [...cooking, recipe];
         setCooking(preparing);
@@ -43,6 +66,9 @@ const Recipes = () => {
         // remove from want to cook table
         const remainingToCook = toCook.filter(recipe => recipe.recipe_id !== id);
         setToCook(remainingToCook);
+
+        // remove from local storage
+        removeFromLocal(id)
     }
 
     return (

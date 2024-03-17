@@ -65,7 +65,7 @@ const Recipes = () => {
         }
     }, [recipes]);
 
-    // handle Preparing button
+    // handle Preparing/Currently Cooking button
     const handleCurrentlyCooking = (recipe, id) => {
         const preparing = [...cooking, recipe];
         setCooking(preparing);
@@ -77,19 +77,21 @@ const Recipes = () => {
         const remainingToCook = toCook.filter(recipe => recipe.recipe_id !== id);
         setToCook(remainingToCook);
 
-        // remove Currently Cooking from UI after mentioned minutes
-        setTimeout(() => {
-            const waitingForCooking = [...preparing, recipe];
-            const remainingCooking = waitingForCooking.filter(recipe => recipe.recipe_id !== id);
-            setCooking(remainingCooking);
-            toast.info("Cooking Completed!");
-        }, (recipe.preparing_time * 60 * 1000));
-
-        // remove from local storage
+        // remove Want to Cook from local storage
         removeFromLocal(id);
 
+        // remove Currently Cooking from UI after mentioned minutes
+        /*
+            setTimeout(() => {
+                const waitingForCooking = [...preparing, recipe];
+                const remainingCooking = waitingForCooking.filter(recipe => recipe.recipe_id !== id);
+                setCooking(remainingCooking);
+                toast.info("Cooking Completed!");
+            }, (recipe.preparing_time * 60 * 1000)); 
+        */
+
         // remove Currently Cooking from local storage after mentioned minutes
-        removeCurrentlyCooking(id, recipe.preparing_time)
+        // removeCurrentlyCooking(id, recipe.preparing_time)
     }
 
     return (

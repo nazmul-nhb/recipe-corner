@@ -11,8 +11,6 @@ const Recipes = () => {
     const [recipes, setRecipes] = useState([]);
     const [toCook, setToCook] = useState([]);
     const [cooking, setCooking] = useState([]);
-    // const [time, setTime] = useState(0);
-    // const [calories, setCalories] = useState(0);
 
     useEffect(() => {
         fetch('https://raw.githubusercontent.com/nazmul-nhb/Fake-API/main/food-items/recipes.json')
@@ -22,29 +20,29 @@ const Recipes = () => {
 
     const handleWantToCook = recipe => {
         const newToCook = [...toCook, recipe];
+
         // prevent adding duplicates
         // const uniqueToCook = newToCook.filter((recipe, index, newToCook) => newToCook.indexOf(recipe) === index);
         // setToCook(uniqueToCook);
+        
         const alreadyExists = toCook.find(item => item.recipe_id === recipe.recipe_id);
+        // showing toast
         !alreadyExists ? (setToCook(newToCook), toast.success("Successfully Added to Cook List!")) : toast.warn("Already Exists!");
     }
 
     const handleCurrentlyCooking = (recipe, id) => {
         const preparing = [...cooking, recipe];
+        setCooking(preparing);
+
         // prevent adding duplicates
         // const uniquePreparing = preparing.filter((recipe, index, preparing) => preparing.indexOf(recipe) === index);
         // setCooking(uniquePreparing);
-        setCooking(preparing);
         // const alreadyExists = preparing.find(item => item.recipe_id === id)
         // !alreadyExists && setCooking(preparing);
 
         // remove from want to cook table
         const remainingToCook = toCook.filter(recipe => recipe.recipe_id !== id);
         setToCook(remainingToCook);
-
-        // append total time and calories
-        /*         setTime(time + recipe.preparing_time);
-                setCalories(calories + recipe.calories); */
     }
 
     return (

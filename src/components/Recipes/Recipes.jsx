@@ -78,8 +78,9 @@ const Recipes = () => {
                     <h2 className="text-2xl md:text-4xl text-[#150B2B] font-semibold">Our Recipes</h2>
                     <p className="text-[#150B2B99] p-4">We cook the best dishes in the continent. You are welcome here to enjoy our delicious dishes! Our dishes are so delicious that you will never forget the taste!</p>
                 </div>
-                <div className="flex flex-col lg:flex-row gap-6 mt-4 lg:mt-8">
-                    <div className="w-full lg:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <div className="flex flex-col xl:flex-row gap-6 mt-4 lg:mt-8">
+                    {/* Main Recipe Cards */}
+                    <div className="w-full xl:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         {
                             recipes.map(recipe => <Recipe
                                 key={recipe.recipe_id}
@@ -88,7 +89,9 @@ const Recipes = () => {
                             ></Recipe>)
                         }
                     </div>
-                    <div className="w-full lg:w-2/5 flex flex-col gap-8 px-6 py-8 border border-[#28282833] rounded-2xl">
+
+                    {/* Want to Cook Sidebar */}
+                    <div className="w-full md:w-[70%] md:mx-auto xl:w-2/5 flex flex-col gap-8 px-6 py-8 border border-[#28282833] rounded-2xl">
                         <div className="">
                             <h3 className="text-center text-lg md:text-2xl font-semibold text-[#282828]">Want to Cook : {toCook.length} </h3>
                             <hr className="border border-[#28282826] w-3/4 mx-auto my-4" />

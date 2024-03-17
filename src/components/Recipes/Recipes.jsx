@@ -43,7 +43,7 @@ const Recipes = () => {
         const alreadyExists = toCook.find(item => item.recipe_id === recipe.recipe_id);
         // showing toast
         !alreadyExists ? (setToCook(newToCook), toast.success("Added to Want to Cook List!"))
-            : toast.warn("Already Exists in Cook List!");
+            : toast.warn("Recipe Already Exists!");
 
         // add to local storage
         addToLocal(recipe.recipe_id);
@@ -79,8 +79,8 @@ const Recipes = () => {
 
         // remove Currently Cooking from UI after mentioned minutes
         setTimeout(() => {
-            const waiting = [...preparing, recipe]
-            const remainingCooking = waiting.filter(recipe => recipe.recipe_id !== id);
+            const waitingForCooking = [...preparing, recipe];
+            const remainingCooking = waitingForCooking.filter(recipe => recipe.recipe_id !== id);
             setCooking(remainingCooking);
             toast.info("Cooking Completed!");
         }, (recipe.preparing_time * 60 * 1000));

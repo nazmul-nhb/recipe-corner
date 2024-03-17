@@ -8,8 +8,7 @@ const Footer = () => {
         <footer className="font-lexend max-w-[1920px] w-full mx-auto flex flex-col gap-6 p-8 lg:p-24 bg-[#12132d0d] lg:mt-24 mt-8">
             <div className="text-center flex flex-col items-center gap-6 mb-4">
                 <h3 className="text-[#12132D] font-extrabold text-[28px] hover:text-[#0BF58A] lg:text-4xl"><a href="#">Recipe Corner</a></h3>
-                <p className="w-full lg:w-3/5 mx-auto text-[#12132DB3]"> We cook the best dishes in the continent.
-                    <br /> You are welcome here to enjoy our delicious dishes!</p>
+                <p className="w-full lg:w-3/5 mx-auto text-[#12132DB3]">Connect with us to elevate your culinary journey. Follow us on social media for exclusive updates!</p>
             </div>
             {/* Social Media */}
             <div className="flex flex-row gap-8 justify-center text-2xl">

@@ -42,7 +42,7 @@ const Recipes = () => {
         // prevent from adding duplicates
         const alreadyExists = toCook.find(item => item.recipe_id === recipe.recipe_id);
         // showing toast
-        !alreadyExists ? (setToCook(newToCook), toast.success("Added to Want to Cook List!"))
+        !alreadyExists ? (setToCook(newToCook), toast.success("Added the Selected Recipe!"))
             : toast.warn("Recipe Already Exists!");
 
         // add to local storage
@@ -71,7 +71,7 @@ const Recipes = () => {
         setCooking(preparing);
         addCookingToLocal(recipe.recipe_id);
 
-        toast.info("Added to Currently Cooking!");
+        toast.info("Added to Preparing List!");
 
         // remove from want to cook table
         const remainingToCook = toCook.filter(recipe => recipe.recipe_id !== id);
@@ -95,9 +95,9 @@ const Recipes = () => {
     return (
         <div className="font-lexend mx-6 lg:mx-32 lg:mt-12 mt-8">
             <div className="max-w-[1600px] w-full mx-auto">
-                <div className="w-full lg:w-1/2 flex flex-col gap-1 md:gap-6 justify-center items-center mx-auto text-center">
+                <div className="w-full lg:w-3/5 flex flex-col gap-1 md:gap-6 justify-center items-center mx-auto text-center">
                     <h2 className="text-2xl md:text-4xl text-[#150B2B] font-semibold">Our Recipes</h2>
-                    <p className="text-[#150B2B99] p-4">We cook the best dishes in the continent. You are welcome here to enjoy our delicious dishes! Our dishes are so delicious that you will never forget the taste!</p>
+                    <p className="text-[#150B2B99] p-4">Explore a diverse collection of recipes curated to tantalize your taste buds and ignite your passion for cooking! From classic favorites to innovative dishes, there&apos;s something to suit every taste.</p>
                 </div>
                 <div className="flex flex-col xl:flex-row gap-6 mt-4 lg:mt-8">
                     {/* Main Recipe Cards */}

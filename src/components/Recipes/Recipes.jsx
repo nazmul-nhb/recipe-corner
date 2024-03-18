@@ -4,8 +4,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Recipe from "../Recipe/Recipe";
 import ToCook from "../ToCook/ToCook";
 import Cooking from "../Cooking/Cooking";
-
-import { addCookingToSession, addToLocal, getStoredItems, getStoredCookingItems, removeFromLocal } from "../utilities/localStorage";
+import { addToLocal, getStoredItems, removeFromLocal } from "../utilities/localStorage";
+import { addCookingToSession, getStoredCookingItems } from "../utilities/sessionStorage";
 
 
 const Recipes = () => {
